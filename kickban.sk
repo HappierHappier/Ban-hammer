@@ -1,0 +1,23 @@
+command /givemaces:
+    permission: skript.maces.give
+    trigger:
+        # Give the player the Kick Hammer (green)
+        give player diamond axe named "&aKick Hammer"
+        send "&aYou have received the &aKick Hammer."
+
+        # Give the player the Ban Hammer (red)
+        give player diamond axe named "&cBan Hammer"
+        send "&aYou have received the &cBan Hammer."
+
+on rightclick with diamond axe:
+    if name of player's tool is "&aKick Hammer":
+        if clicked entity is a player:
+            set {_target} to clicked entity
+            kick {_target} due to "You have been kicked by the Kick Hammer!"
+            broadcast "&a%{_target}% has been kicked for being too bad."
+
+    if name of player's tool is "&cBan Hammer":
+        if clicked entity is a player:
+            set {_target} to clicked entity
+            ban {_target} due to "You have been banned by the Ban Hammer!"
+            broadcast "&c%{_target}% has been banned for being too bad."
